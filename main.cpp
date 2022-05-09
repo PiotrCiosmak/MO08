@@ -5,7 +5,7 @@
 using namespace std;
 
 template<typename T>
-void saveToFile(const vector<vector<T>> &differences)
+void saveToFile(const vector<vector<T>> &differences, const vector<T> &archivesH)
 {
     fstream fowardDifference2Center("fowardDifference2Center.txt", ios::out);
     fstream centralDifference2Center("centralDifference2Center.txt", ios::out);
@@ -15,11 +15,11 @@ void saveToFile(const vector<vector<T>> &differences)
 
     for (int i = 0; i < differences.size(); ++i)
     {
-        fowardDifference2Center << log10(differences.at(i).at(0)) << ";";
-        centralDifference2Center << log10(differences.at(i).at(1)) << ";";
-        backwardDifference2Center << log10(differences.at(i).at(2)) << ";";
-        backwardDifference2End << log10(differences.at(i).at(3)) << ";";
-        backwardDifference3End << log10(differences.at(i).at(4)) << ";";
+        fowardDifference2Center << log10(archivesH.at(i)) << " " << log10(differences.at(i).at(0)) << "\n";
+        centralDifference2Center << log10(archivesH.at(i)) << " " << log10(differences.at(i).at(1)) << "\n";
+        backwardDifference2Center << log10(archivesH.at(i)) << " " << log10(differences.at(i).at(2)) << "\n";
+        backwardDifference2End << log10(archivesH.at(i)) << " " << log10(differences.at(i).at(3)) << "\n";
+        backwardDifference3End << log10(archivesH.at(i)) << " " << log10(differences.at(i).at(4)) << "\n";
     }
 
     fowardDifference2Center.close();
@@ -33,11 +33,12 @@ int main()
 {
     vector<vector<double>> results;
     vector<vector<double>> differences;
+    vector<double> archivesH;
     constexpr double begin{0};
     constexpr double end{M_PI / 2};
-    double h{1};
+    double h{100};
     constexpr double epsilon{1e-10};
-    calculate(results, begin, end, h, epsilon);
+    calculate(results, archivesH, begin, end, h, epsilon);
     difference(results, differences, begin, end);
-    saveToFile(differences);
+    saveToFile(differences, archivesH);
 }

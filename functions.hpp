@@ -1,7 +1,7 @@
 #include <cmath>
 #include <vector>
 
-constexpr int numberOfIterations{20};
+constexpr int numberOfIterations{1000};
 
 template<typename T>
 T function(T x)
@@ -46,7 +46,7 @@ T backwardDifference3(T x, T h)
 }
 
 template<typename T>
-void calculate(std::vector<std::vector<T>> &results, const T &begin, const T &end, T &h, const T &epsilon)
+void calculate(std::vector<std::vector<T>> &results, std::vector<T> &archivesH, const T &begin, const T &end, T &h, const T &epsilon)
 {
     T center = (begin - end) / 2;
 
@@ -60,6 +60,7 @@ void calculate(std::vector<std::vector<T>> &results, const T &begin, const T &en
         results.at(i).at(2) = backwardDifference2(center, h);
         results.at(i).at(3) = backwardDifference2(end, h);
         results.at(i).at(4) = backwardDifference3(end, h);
+        archivesH.push_back(h);
         h /= 1.05;
     }
 }
