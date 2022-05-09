@@ -18,19 +18,19 @@ T derivative(T x)
 template<typename T>
 T fowardDifference2(T x, T h)
 {
-    return function(x + h) - function(x) / h;
+    return (function(x + h) - function(x)) / h;
 }
 
 template<typename T>
 T centralDifference2(T x, T h)
 {
-    return function(x + h) - function(x - h) / 2 * h;
+    return (function(x + h) - function(x - h)) / (2 * h);
 }
 
 template<typename T>
 T backwardDifference2(T x, T h)
 {
-    return function(x) - function(x - h) / h;
+    return (function(x) - function(x - h)) / h;
 }
 
 template<typename T>
