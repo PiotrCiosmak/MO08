@@ -78,5 +78,4 @@ void difference(const std::vector<std::vector<T>> &results, std::vector<std::vec
         differences.at(i).at(3) = fabs(results.at(i).at(3) - derivative(end));
         differences.at(i).at(4) = fabs(results.at(i).at(4) - derivative(end));
     }
-    //cout << endl << endl << "Order of accuracy" << endl;
 }

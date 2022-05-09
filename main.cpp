@@ -41,4 +41,5 @@ int main()
     calculate(results, archivesH, begin, end, h, epsilon);
     difference(results, differences, begin, end);
     saveToFile(differences, archivesH);
+
 }
