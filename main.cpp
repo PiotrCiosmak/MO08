@@ -37,13 +37,13 @@ void saveToFile(const vector<vector<T>> &differences, const vector<T> &archivesH
 
 int main()
 {
-    vector<vector<float>> results;
-    vector<vector<float>> differences;
-    vector<float> archivesH;
-    constexpr float begin{0};
-    constexpr float end{M_PI / 2};
-    float h{100};
-    constexpr float epsilon{1e-10};
+    vector<vector<double>> results;
+    vector<vector<double>> differences;
+    vector<double> archivesH;
+    constexpr double begin{0};
+    constexpr double end{M_PI / 2};
+    double h{100};
+    constexpr double epsilon{1e-10};
     calculate(results, archivesH, begin, end, h, epsilon);
     difference(results, differences, begin, end);
     saveToFile(differences, archivesH);
